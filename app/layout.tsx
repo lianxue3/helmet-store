@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "./components/LanguageProvider";
 import SiteChrome from "./components/SiteChrome";
 
@@ -19,6 +20,7 @@ export default function RootLayout({
         <LanguageProvider>
           <SiteChrome>{children}</SiteChrome>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
