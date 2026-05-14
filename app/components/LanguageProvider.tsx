@@ -8,17 +8,17 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { SiteLanguage } from "./site-text";
+import type { Language } from "./site-text";
 
 type LanguageContextValue = {
-  language: SiteLanguage;
-  setLanguage: (language: SiteLanguage) => void;
+  language: Language;
+  setLanguage: (language: Language) => void;
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<SiteLanguage>("en");
+  const [language, setLanguageState] = useState<Language>("en");
 
   useEffect(() => {
     const stored = window.localStorage.getItem("xvex-language");
@@ -28,7 +28,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  const setLanguage = (nextLanguage: SiteLanguage) => {
+  const setLanguage = (nextLanguage: Language) => {
     setLanguageState(nextLanguage);
     window.localStorage.setItem("xvex-language", nextLanguage);
     document.documentElement.lang = nextLanguage;
